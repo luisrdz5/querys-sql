@@ -1,0 +1,4 @@
+ALTER TABLE dbo.convenios 
+ADD moratorioxd numeric(8,2) NULL, 
+ivamoratorioxd numeric(8,2) NULL, 
+totalmoratorioxd numeric (10,2) NULL ;  

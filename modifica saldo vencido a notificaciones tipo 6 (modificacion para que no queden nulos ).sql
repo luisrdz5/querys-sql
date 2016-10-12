@@ -34,9 +34,10 @@ begin
 	SET @numcredito=NULL	
 	set @dias=0
 	set @adeudo=0
-	select top 1 @numcredito=NumCredito
+	set transaction isolation level read uncommitted
+	select top 1 @numcredito=NumCredito, @fechanotificacion=fechagestion
 	from gestioninterna
-	where tipogestion='6' and importevencido=0 and diasvencido=0
-
+	where tipogestion='6' and importevencido = 0  and diasvencido = 0 
+  
 END
 	
