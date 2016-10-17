@@ -3,8 +3,7 @@ declare
 	@numcredito		as varchar(9)
 
 
-
-SET @rpu=''
+SET @rpu='103070356043'
 
 select @numcredito=numcredito
 from creditos
