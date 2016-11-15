@@ -12,7 +12,6 @@ where solicitudscc in (
 	join creditos c on c.NumCredito=d.solicitudscc 
 	where c.TipoCredito in ('RF','AA') and d.estatus in ('17','19')
 )
-and (select COUNT(*) from det_amortizacion where solicitudscc = det.solicitudscc and estatus in ('17','19') )  = 1 
 group by solicitudscc, rpu
 having COUNT(*) in ('25','49')
 order by ((select SUM(pagodec) from det_amortizacion where solicitudscc = det.solicitudscc) 
