@@ -10,55 +10,148 @@ select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_01 where RPU=d.rpu and
 ) as cobranza_sicom,
 (select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_01 where RPU=d.rpu) as cobranza_sicom_sin_filtros,
 (select SUM(PAGODEC) from DET_AMORTIZACION where solicitudscc=d.NumCredito and ESTATUS IN ('14','18')) as cobranza_sirca,
-(select SUM(saldo) from DET_AMORTIZACION where solicitudscc=d.NumCredito) as saldo_sirca,
+(select SUM(saldo) from DET_AMORTIZACION where solicitudscc=d.NumCredito and saldo > 0 ) as saldo_sirca,
 (select SUM(PAGODEC) from DET_AMORTIZACION where solicitudscc=d.NumCredito and ESTATUSOPFIN ='1') as cobranza_sac,
 (select SUM(PAGODEC) from DET_AMORTIZACION where solicitudscc=d.NumCredito) as total_a_pagar,
-NULL as procesado
-into #tmp3
+(select SUM(importe) from pagos where NumCredito=d.NumCredito) as total_en_pagos,
+NULL as procesado,
+(select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_01 where RPU=d.rpu 
+and fecfac ='000000'
+) saldo_en_sicom
+into #tmp4
 FROM CREDITOS d
 WHERE TIPOCREDITO in ('RF','AA', 'PA', 'MT') and estatusCredito not in ('8','9','20','24','92','25')
 group by NumCredito, rpu, tipocredito
 
 
--- sirca = sac y arqueo mas que sirca 
-select tipocredito as programa ,  COUNT(*) as numero_creditos, 
-sum( case when cobranza_sicom > total_a_pagar then total_a_pagar - (cobranza_sirca + saldo_sirca )  else cobranza_sicom - (cobranza_sirca + saldo_sirca )  end )  as monto_diferencia
-from #tmp3 where cobranza_sicom > (cobranza_sirca+saldo_sirca) and cobranza_sirca = cobranza_sac
-group by tipocredito
+-- cobranza faltante en sirca y sac  
 
+select COUNT(*), SUM(cobranza_sicom - cobranza_sirca)
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca 
+
+
+-- cobranza faltante en sirca y sac  detalle 
+select COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom=0
+
+--------------------------------------------------------------------------------
+
+select  COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom=0 and cobranza_SICOm < total_a_pagar
+
+
+select  COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom=0 and ceiling(cobranza_SICOm) = ceiling(total_a_pagar)
+
+select  COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom=0 and ceiling(cobranza_SICOm) > ceiling(total_a_pagar)
+
+
+--------------------------------------------------------------------------------
+
+select (cobranza_sicom - cobranza_sirca ) ,* --COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom>0
+order by (cobranza_sicom - cobranza_sirca ) desc
+
+select COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom is null
+
+
+
+
+
+
+
+
+
+
+
+
+-- diferencias entre sistemas 
 
 -- creditos que tienen mas en sirca que sac 
-select 'SENER',  COUNT(*), 
-SUM(cobranza_sirca - cobranza_sac )as monto
-from #tmp3 
-where cobranza_sirca > cobranza_sac
-and tipocredito in ('RF','AA')
+
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac 
 
 
--- creditos que tienen mas en sac que en sirca 
-select 'SENER',  COUNT(*), 
-SUM(cobranza_sac - cobranza_sirca  )as monto
-from #tmp3 
-where cobranza_sirca < cobranza_sac
-and tipocredito in ('RF','AA')
+-- clasificacion de creditos que tienen mas en sirca que sac 
 
---31030
--- creditos que se detecto falta un pago en arqueo
-select 
-*,
-(select SUM(importe) from pagos where rpu=t.rpu) pagos_sirca
-from #tmp3 t
-where cobranza_sirca=cobranza_sac and cobranza_SICOM > cobranza_sirca
-and cobranza_SICOM = (select SUM(importe) from pagos where rpu=t.rpu)
-and cobranza_sicom = cobranza_sicom_sin_filtros
---and cobranza_sicom = (select SUM(pagodec) from det_amortizacion where solicitudscc=t.numcredito)
+--creditos que solo se debe pasar la cobranza de sirca a sac
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and (cobranza_sicom = cobranza_sirca)
 
--- creditos que se detecto falta un pago en arqueo
---19687
-select 
-*
-,(select SUM(importe) from pagos where rpu=t.rpu) pagos_sirca
-from #tmp3 t
-where cobranza_sirca=cobranza_sac and cobranza_SICOM > cobranza_sirca
-and cobranza_SICOM = (select SUM(importe) from pagos where rpu=t.rpu)
-and cobranza_sicom < cobranza_sicom_sin_filtros
+--creditos que solo se debe pasar la cobranza de sirca a sac y pasaran al grupo que les falta cobranza de arqueo
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom > cobranza_sirca 
+
+-- se debera verificar por que puede haber llegado la cobranza por diarios y si es asi solo se debera pasar a sac
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca
+
+--------------------------------------------------------------------------------
+
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom = cobranza_sac
+
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom > cobranza_sac
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom < cobranza_sac
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+
+-- no hay cobranza detectada por arqueo ( se debera verificar en diario )
+select COUNT(*), SUM(cobranza_sirca - cobranza_sac)
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom is null
+
+
+
+
+-- creditos que tienen mas en sac que sirca
+
+select COUNT(*), SUM(cobranza_sicom - cobranza_sac)
+from #tmp4
+where cobranza_sirca < cobranza_sac 
+
+-- Creditos que sac esta igual que arqueo 
+
+select COUNT(*), SUM(cobranza_sicom - cobranza_sac)
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom = cobranza_sac
+
+
+select COUNT(*), SUM(cobranza_sicom - cobranza_sac)
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom > cobranza_sac
+
+
+select COUNT(*), SUM( cobranza_sac - cobranza_sicom )
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom < cobranza_sac
+
+select COUNT(*), SUM( cobranza_sac - isnull(cobranza_sicom,0) )
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom is null
+
+
