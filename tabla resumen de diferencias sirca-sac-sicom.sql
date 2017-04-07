@@ -1,5 +1,7 @@
 -- segunda version tabla resumen
--- drop table #tmp3
+-- drop table #tmp4
+
+
 SELECT 
 numcredito,
 tipocredito, 
@@ -15,12 +17,12 @@ select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_01 where RPU=d.rpu and
 (select SUM(PAGODEC) from DET_AMORTIZACION where solicitudscc=d.NumCredito) as total_a_pagar,
 (select SUM(importe) from pagos where NumCredito=d.NumCredito) as total_en_pagos,
 NULL as procesado,
-(select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_01 where RPU=d.rpu 
+(select SUM(saldo) from LINKsac.arqueo.dbo.Arqueo_2017_02 where RPU=d.rpu 
 and fecfac ='000000'
 ) saldo_en_sicom
 into #tmp4
 FROM CREDITOS d
-WHERE TIPOCREDITO in ('RF','AA', 'PA', 'MT') and estatusCredito not in ('8','9','20','24','92','25')
+WHERE TIPOCREDITO in ('RF','AA') and estatusCredito not in ('8','9','20','24','92','25')
 group by NumCredito, rpu, tipocredito
 
 
@@ -54,10 +56,10 @@ where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and sald
 
 --------------------------------------------------------------------------------
 
-select (cobranza_sicom - cobranza_sirca ) ,* --COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
+select COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
 from #tmp4
 where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom>0
-order by (cobranza_sicom - cobranza_sirca ) desc
+
 
 select COUNT(*), SUM(cobranza_sicom - cobranza_sirca )
 from #tmp4
@@ -132,11 +134,11 @@ where cobranza_sirca > cobranza_sac and cobranza_sicom is null
 
 select COUNT(*), SUM(cobranza_sicom - cobranza_sac)
 from #tmp4
-where cobranza_sirca < cobranza_sac 
+where cobranza_sirca < cobranza_sac and  cobranza_sicom >= cobranza_sac
 
 -- Creditos que sac esta igual que arqueo 
 
-select COUNT(*), SUM(cobranza_sicom - cobranza_sac)
+select COUNT(*), SUM(cobranza_sac - cobranza_sirca)
 from #tmp4
 where cobranza_sirca < cobranza_sac and cobranza_sicom = cobranza_sac
 
@@ -146,12 +148,85 @@ from #tmp4
 where cobranza_sirca < cobranza_sac and cobranza_sicom > cobranza_sac
 
 
-select COUNT(*), SUM( cobranza_sac - cobranza_sicom )
-from #tmp4
-where cobranza_sirca < cobranza_sac and cobranza_sicom < cobranza_sac
+--select COUNT(*), SUM( cobranza_sac - cobranza_sicom )
+--from #tmp4
+--where cobranza_sirca < cobranza_sac and cobranza_sicom < cobranza_sac
 
 select COUNT(*), SUM( cobranza_sac - isnull(cobranza_sicom,0) )
 from #tmp4
 where cobranza_sirca < cobranza_sac and cobranza_sicom is null
 
 
+
+select *
+from CobranzaPendiente
+
+
+
+
+
+select NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca > cobranza_sac and (cobranza_sicom = cobranza_sirca)
+
+select  NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom = cobranza_sac
+
+select  NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom > cobranza_sac
+
+select  NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom < cobranza_sirca and cobranza_sicom < cobranza_sac
+
+select   NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom > cobranza_sac
+
+
+
+
+
+
+select NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca, saldo_en_sicom
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom is null
+
+-- no hay cobranza detectada por arqueo ( se debera verificar en diario )
+select  NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca > cobranza_sac and cobranza_sicom is null
+
+select  NumCredito, rpu, cobranza_sicom, cobranza_sac, cobranza_sirca
+from #tmp4
+where cobranza_sirca < cobranza_sac and cobranza_sicom is null
+
+
+
+_______________________________________________________________________________________
+
+
+
+INSERT INTO [SircaNac].[dbo].[CobranzaPendiente]
+           ([NumCredito]
+           ,[procesado]
+           ,[tipocredito]
+           ,[rpu]
+           ,[cobranza_SICOM]
+           ,[cobranza_sirca]
+           ,[cobranza_sac]
+           ,[tipo])
+
+select  [NumCredito]
+           ,null as procesado
+           ,[tipocredito]
+           ,[rpu]
+           ,[cobranza_SICOM]
+           ,[cobranza_sirca]
+           ,[cobranza_sac]
+           ,'1' as tipo
+           
+from #tmp4
+where cobranza_sirca = cobranza_sac and cobranza_SICOM > cobranza_sirca and saldo_en_sicom=0 and ceiling(cobranza_SICOm) = ceiling(total_a_pagar)
