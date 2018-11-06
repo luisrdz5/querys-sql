@@ -1,0 +1,126 @@
+Descripcion,1,2,3,4,5,6,7,8,9,12,13,14,15,17,18,19
+http://10.55.210.38/sircanac_v4/administracion/grabaDatosCliente.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/administracion/modificaDatosCliente.php,Es una pagina con contenido,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/administracion/pideDatosCliente.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/datosConvenio.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/datosCredito.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/detallepagos.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/historicoMovtoe19.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/pagosoriginalesCFE.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/ConsultaClientes.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/creditosCliente.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/index.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/pagosAnticipados.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/SolicitudesPagoAnticipado.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/calculopagoanticipadoespecial.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/edocuentacredito.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/generapagosoriginalesCFE.php,"regresa un archivo tipo:inline; filename=""PagosCFE_.csv""","regresa un archivo tipo:inline; filename=""PagosCFE_.csv"""
+http://10.55.210.38/sircanac_v4/CLMcreditos/datosCredito_pdf.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/datosCredito_pdf_firma.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/PdfOficiopagoAnticipadoEspe.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/CLMcreditos/BuscaClientePorRN.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/ClienteCreditos.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/SeleccionarAmortizacionesMoratorias.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/validaSeleccion.php,Es una pagina que solo muestra un alert,Es una pagina que solo muestra un alert
+http://10.55.210.38/sircanac_v4/CLMcreditos/generaPDFMoritarios.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/grabaSolFIDEespe.php,regresa a index.php,Es una pagina que solo muestra un alert
+http://10.55.210.38/sircanac_v4/CLMcreditos/solicitudPdteLiqAnticipada.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/filtroRefereFide.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/reportesolicitudespa.php,regresa a index.php,"regresa un archivo tipo:inline; filename=""ReporteSolicitud_PagoAnticipado_06-09-2018.csv"""
+http://10.55.210.38/sircanac_v4/CLMcreditos/CapturaMovimientosRPU.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/movtoCapturaReferenciaLA.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/movtoCambioDomws.php,regresa a index.php,Se encontro problema grave de seguridad sql 
+http://10.55.210.38/sircanac_v4/CLMcreditos/grabaDomicilio.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/PDFcartaCambioDom.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/validaRPUCFE.php,,
+http://10.55.210.38/sircanac_v4/CLMcreditos/movtoCorreccionCargosws.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/movtoCambioDomwsdf.php,regresa a index.php,Se encontro problema grave de seguridad sql 
+http://10.55.210.38/sircanac_v4/CLMcreditos/PassCambioDom.php,Es una pagina con contenido,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/movtoCambioDomwsdd.php,regresa a index.php,Se encontro problema grave de seguridad sql 
+http://10.55.210.38/sircanac_v4/CLMcreditos/SolicitudesPagoAnticipado_Finalizar.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecepcionMovimientosCFE.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioCambioDom.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioReferenciaPA.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioCorreccionCargos.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioCambioDomdf.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioCambioDomdd.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/liquidacionventanilla.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/listatraspasosorigen.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/SeleccionaReactivacion.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/reactivacioncargos.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/reactivaciondeudor.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/vertraspasodestino.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/checatraspaso.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/detalletraspaso.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/ValidaMovimientosRPU.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/ValidaCambioDom.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/ValidaReferenciaPA.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/ValidaCambioDomdf.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/pideDatosClienteAut.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/administracion/pideDatosCliente2.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/administracion/modificaDatosClientes.php,Es una pagina con contenido,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/creditosDudosos.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/CancelaMovimientosRPU.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/solicitudesautomaticas.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/RecibioCambioDomdd.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/Excepciones.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/Excepcionesliq.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/ConsultaClientesConvenio.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/ConsultaClientesConvenioEspecial.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/creditosClienteConvenioEspecial.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/convenio5(RAP).php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/creditosClienteConvenio.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/convenioCE.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/convenioRAP3.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/convenioRAP.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/convenio4.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/calculaAmortizacionRAP5.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/gestion/calculaAmortizacion4.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/gestion/calculaAmortizacionRAP3.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/gestion/calculaAmortizacionRAP.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/gestion/fichadeposito.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/clases/calculoReferencia.php,,
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioCARGOEXTRA_1.php,regresa a index.php,No Encuentra la pagina
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioESPECIAL_5.php,regresa a index.php,No Encuentra la pagina
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAP.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAP3.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAPCONTRASPASO_3.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAPDEVENGADO_4.php,regresa a index.php,No Encuentra la pagina
+http://10.55.210.38/sircanac_v4/gestion/generaTAconvenioCE.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/pagoanticipoconvenio.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/detalleconveniopago.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/capturapagoConvenio.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/pendientesImpresionConvenios.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/previoimpreconvenioTD.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioTD.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/previoimpreconvenioRAP.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAP.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/impresionConvenioRAP3.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/vistaImpreConvenioRAP3.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/fichadepositoparcialidades.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/imprimeconvenio1.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/convenio1vistaimp.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/cancelacionconvenio.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/CLMcreditos/seguimientoNoFacturado.php,Es una pagina con contenido,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/CLMcreditos/CreditosNoFacturados.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/gestion/filtroRecupera.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/filtroCobranzaNac.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/Rep_RecuperacionZona.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/Rep_RecuperacionNac.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/combo_capturaGestionLlamada.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/GestionLlamada.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/generacionPDFCartas.php,regresa a index.php,"regresa un archivo tipo:inline; filename=""doc.pdf"""
+http://10.55.210.38/sircanac_v4/gestion/getzona.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/gestion/sepomexppal.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/rpuencuestaCobranza.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/generaExcelGestion.php,regresa a index.php,"regresa un archivo tipo:attachment; filename=""GestInterna_Todas_06-09-2018.xls"""
+http://10.55.210.38/sircanac_v4/gestion/pideDatosAvalNotificacion.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/validaCartasEspeciales.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/generacionPDFCartasEspecial.php,regresa a index.php,"regresa un archivo tipo:attachment; filename=""cartasespecial.pdf"""
+http://10.55.210.38/sircanac_v4/gestion/estadodeCuenta.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/gestion/historicoGestion.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/reportes/reportegestion.php,regresa a index.php,Es una pagina con contenido
+http://10.55.210.38/sircanac_v4/reportes/ajax_coord_rezago.php,regresa a index.php,
+http://10.55.210.38/sircanac_v4/reportes/reportegestioncsv.php,regresa a index.php,"regresa un archivo tipo:attachment; filename=""export.csv"""
+http://10.55.210.38/sircanac_v4/reportes/ReporteLiqAntPorCerrar.php,regresa a index.php,regresa a index.php
+http://10.55.210.38/sircanac_v4/reportes/genereLiqAntPorCerrarExcel.php,regresa a index.php,regresa a index.php
